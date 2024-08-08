@@ -1,0 +1,87 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\title{Operating Systems Notes}
+\author{Sam Kirk} 
+\date{July 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Week 1 (Whole lecture made no sense)}
+\subsection*{What is an Operating System?}
+\begin{itemize}
+    \item A software that converts hardware into a usefull form for applications 
+    \item A resource allocator and control program making efficient use 
+    of hardware and managing the execution of user programs. 
+\end{itemize}
+\subsection*{What does an OS provide?}
+\begin{itemize}
+    \item Abstraction - provides a standard library for resources
+    \item (Resources are anything valuable, i.e. CPU, memory, disk)
+\end{itemize}
+\subsection*{Advantages of Abstraction}
+\begin{itemize}
+    \item Allows applications to reuse common facilites 
+    \item Make different devices look the same 
+    \item Provides higher-level or more useful functionality 
+\end{itemize}
+\subsection*{What is a process?}
+\begin{itemize}
+    \item An execution stream in the context of a process state 
+    \item What is an execution stream?
+    \item Stream of executing instructions 
+    \item Running piece of code 
+    \item Thread of control 
+\end{itemize}
+
+\section*{Week 2}
+\subsection*{Status Bit}
+Determines if we are in user mode or kernel mode. 
+
+\subsection*{Scheduler}
+Determines the order that tasks 
+are completed. Some common performance 
+metrics for the scheduler are:
+\begin{itemize}
+    \item Turnaround time: completion-time - arrival-time
+    \item Response time: initial-schedule-time - arrival-time 
+    \item Waiting time: How long tasks spend in the ready queue 
+    \item Throughput: Jobs completed per unit of time 
+    \item Resource utilization: Keep expensive decives busy 
+    \item Overhead: The number of context switches 
+    \item Fairness: All jobs get the same amount of CPU over some time interval 
+\end{itemize}
+
+Schedulers can be First Come First Served (FCFS), 
+Shortest Job First (SJF), Shorted Time to First Completion 
+(STCF), RR, Multi Level Feedback Queue (MLFQ),
+Completely Fair Scheduler (CFS).
+
+The Dispatcher performs context-switches, i.e. switching from 
+user mode to kernel mode. 
+
+In FCFS scheduling, convoys of small tasks tend to built 
+up when a large one is running. 
+
+\subsection*{Preemptive Scheduling}
+Potentially schedule different jobs at any point 
+by taking CPU away from running job. 
+So we can run half a task and then if a shorter task comes 
+along we can switch and run that task. 
+
+
+
+
+
+\end{document}
