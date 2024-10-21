@@ -18,6 +18,42 @@
 \begin{document}
 \maketitle
 
+\section*{Acronym Table}
+\begin{itemize}
+    \item POSIX: Portable Operating System Interface. a set of standard operating system interfaces based on the Unix operating system
+    \item PID: Process Identifier. 
+    \item MMU: Memory Management Unit.
+    \item PCB: Process Control Block. A structure that contains information about each process
+    \item MLFQ: Multi Level Feedback Queue 
+    \item CFS: Completely Fair Scheduler
+    \item PTE: Page Table Entry 
+    \item VPN: Virtual Page Number 
+    \item PFN: Page File Number 
+    \item DMI: Direct Media Interface 
+    \item PCIe: Peripheral Component Interconnect Express
+    \item PIO: Programmed IO 
+    \item ISR: Interrupt Service Routine 
+    \item DMA: Direct Memory Access 
+    \item RAID: Redundant Array of Inexpensive Disks
+\end{itemize}
+
+\section*{Skipped Textbook Chapters}
+\begin{itemize}
+    \item 10 
+    \item half of 17
+    \item Most of 23 
+    \item Chapter 27 is confusing 
+    \item Chapter 31 is confusing 
+    \item 33 
+    \item 36 is confusing 
+    \item Should probably read 37 again 
+\end{itemize}
+
+\section*{Things to work on}
+\begin{itemize}
+    \item Address translation with paging (chapter 18)
+\end{itemize}
+
 \section*{Week 1 (Whole lecture made no sense)}
 \subsection*{What is an Operating System?}
 \begin{itemize}
@@ -80,6 +116,82 @@ by taking CPU away from running job.
 So we can run half a task and then if a shorter task comes 
 along we can switch and run that task. 
 
+\section*{Prac Assignment 1}
+\subsection*{even.c}
+\begin{itemize}
+    \item fflush(stdout); flushes the output and prints what we have. Without this command it prints everything at the end of the loop. 
+    \item SIGINT is an interupt. Triggered by entering ctrl + c. 
+    \item SIGHUP is a signal hang-up. Need process PID number to execute. run "kill -SIGHUP (PID number)" in another terminal to interupt.
+    \item Get process PID using printf("Process PID: \% d", getpid());
+\end{itemize}
+
+\subsection*{minishell.c}
+Included libraries and their purpose: 
+\begin{itemize}
+    \item <sys/types.h> and <sys/wait.h>: For process control functions and types.
+    \item <stdio.h>: For input and output functions.
+    \item <string.h>: For string manipulation functions.
+    \item <unistd.h>: For POSIX operating system API functions.
+    \item <stdlib.h>: For general utilities, including memory allocation and process control.
+    \item <signal.h>: For signal handling.
+\end{itemize}
+
+Questions: 
+\begin{itemize}
+    \item What is a fork and how does it work?
+    \item What is a perror 
+    \item What is the execvp function 
+    \item How many PIDs can run at once and are they related to the number of cores in the computer 
+\end{itemize}
+
+
+Parent and Child Processes:\\ 
+A parent process is a process that creates one or more child processes.
+The parent process typically performs operations that involve managing, monitoring, or 
+coordinating with its child processes. It may create child processes to perform specific 
+tasks concurrently or handle multiple tasks simultaneously.\\ 
+A child process is a process that is created by a parent process.
+The child process executes instructions independently of the parent process. 
+It inherits some properties from the parent process, such as open file descriptors, 
+environment variables, and sometimes memory space. However, it has its own unique 
+process ID (PID) and may execute different code or perform different tasks.
+
+
+Possible Return Values from fork()\\ 
+\begin{itemize}
+    \item If fork() returns a positive integer, this value is the process ID (PID) of the newly created child process
+    \item If fork() returns 0, this indicates that the code is executing in the child process
+    \item If fork() returns -1, it indicates that an error occurred while attempting to create a new process. 
+\end{itemize}
+
+\section*{Week 3}
+\subsection*{Managing Processes with Base and Bounds}
+Give each process a base register for its memory use and give 
+it a bound which it cannot exceed. Protection is required 
+so a user cannot change the base and bound registers. 
+Also a user cannot change to privileged mode. 
+Some advantages of this Base and Bound resgisters are:
+\begin{itemize}
+    \item Provides memory Protection
+    \item Support dynamic relocation for process memories
+    \item Simple and inexpensive (few registers, little MMU logic)
+    \item Fast (add and compare occur in parallel)
+\end{itemize}
+Disadvantages are:
+\begin{itemize}
+    \item Each process has a certian amount of space so this might go unused 
+    \item Also this memory is continuous (so its in one big block/list)
+    \item Cannot share memory with other processes
+\end{itemize}
+
+\subsection*{Paging}
+Divide address spaces and physical memory into fixed-size pages. 
+
+\section*{Week 4}
+
+\section*{Week 5}
+
+\section*{Week 6}
 
 
 
